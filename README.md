@@ -186,7 +186,7 @@ function App() {
       .then((movies) => console.log(movies));
   }, []);
 
-  return <h1>Hello from React!</h1>;
+  return <h1>Check the console for a list of movies!</h1>;
 }
 
 export default App;
