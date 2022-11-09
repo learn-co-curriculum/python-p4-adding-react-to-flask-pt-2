@@ -226,9 +226,9 @@ Rather than running on a development server, we're migrating to [Gunicorn
 ][gunicorn], a simple Python WSGI server which will be much more capable of
 handling requests when we deploy our application to the internet.
 
-> NOTE: Gunicorn will run on WSL, but not Windows. [Waitress](
+> **NOTE: Gunicorn will run on WSL, but not Windows. [Waitress](
   https://docs.pylonsproject.org/projects/waitress/en/latest/) is a good
-> alternative if you cannot use MacOS, Linux, or WSL.
+> alternative if you cannot use MacOS, Linux, or WSL.**
 
 Now, run your Procfile with Honcho:
 
@@ -263,7 +263,7 @@ Before you move on, make sure you can answer the following questions:
     <em>1. What options do you have for running Flask and React at the same time?</em>
   </summary>
 
-  <h3>Two separate terminal windows OR Honcho</h3>
+  <p>Two separate terminal windows OR Honcho</p>
 </details>
 <br/>
 
@@ -273,10 +273,10 @@ Before you move on, make sure you can answer the following questions:
         described in this lesson?</em>
   </summary>
 
-  <h3>Honcho does not require two separate terminal windows and prepares our
-      application for online deployment with a Procfile.</h3>
-  <h3>Honcho combines all server logs into one window, which is disadvantageous
-      for debugging.</h3>
+  <p>Honcho does not require two separate terminal windows and prepares our
+      application for online deployment with a Procfile.</p>
+  <p>Honcho combines all server logs into one window, which is disadvantageous
+      for debugging.</p>
 </details>
 <br/>
 
