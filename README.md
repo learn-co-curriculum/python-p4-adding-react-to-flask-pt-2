@@ -1,4 +1,4 @@
-# Adding React to Flask, Part 2
+# Adding React to Flask Part 2
 
 ## Learning Goals
 
