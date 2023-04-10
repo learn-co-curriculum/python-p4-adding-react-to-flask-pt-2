@@ -7,8 +7,6 @@ from faker import Faker
 from app import app
 from models import db, Movie
 
-db.init_app(app)
-
 fake = Faker()
 
 def make_movies():
