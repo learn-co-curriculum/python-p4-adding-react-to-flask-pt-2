@@ -5,7 +5,7 @@
 - Use React and Flask together to build beautiful and powerful web applications.
 - Organize client and server code so that it is easy to understand and maintain.
 
-***
+---
 
 ## Key Vocab
 
@@ -32,14 +32,14 @@
   maintained until it is terminated by one side. This allows for speedy and
   seamless connections between frontends and backends.
 
-***
+---
 
 ## Introduction
 
-Now that we've built several Flask backends and reviewed what goes into a
-React frontend, let's build a new full-stack application from scratch.
+Now that we've built several Flask backends and reviewed what goes into a React
+frontend, let's build a new full-stack application from scratch.
 
-***
+---
 
 ## Generating a React Application
 
@@ -53,9 +53,9 @@ This will create a new React application in a `client` folder, and will use npm
 instead of yarn to manage our dependencies.
 
 When we're running React and Flask in development, we'll need two separate
-servers running on different ports — we'll run React on port 4000, and
-Flask on port 5555. Whenever we want to make a request to our Flask API from
-React, we'll need to make sure that our requests are going to port 5555.
+servers running on different ports — we'll run React on port 4000, and Flask on
+port 5555. Whenever we want to make a request to our Flask API from React, we'll
+need to make sure that our requests are going to port 5555.
 
 We can simplify this process of making requests to the correct port by using
 `create-react-app` in development to [proxy the requests to our API][proxy].
@@ -82,10 +82,12 @@ different port to run our React app in development:
 }
 ```
 
-With that set up, let's get started on our Flask app. In the root directory,
-run `pipenv install && pipenv shell` to create and enter your virtual
-environment (we configured this piece for you). Create an `app.py` in the `server/`
-directory and enter the following code:
+## Creating the Server Application
+
+With that set up, let's get started on our Flask app. In the root directory, run
+`pipenv install && pipenv shell` to create and enter your virtual environment.
+
+Create an `app.py` in the `server/` directory and enter the following code:
 
 ```py
 # server/app.py
@@ -134,6 +136,8 @@ populate our database and update the Flask app to show that data. Modify
 
 ```py
 # server/app.py
+#!/usr/bin/env python3
+
 
 from flask import Flask, request, make_response, jsonify
 from flask_cors import CORS
@@ -160,11 +164,11 @@ def movies():
             jsonify([movie.to_dict() for movie in movies]),
             200,
         )
-    
+
     return make_response(
         jsonify({"text": "Method Not Allowed"}),
         405,
-    ) 
+    )
 
 if __name__ == '__main__':
     app.run(port=5555)
@@ -173,6 +177,11 @@ if __name__ == '__main__':
 
 Once you have saved these changes, run `flask db upgrade` to generate your
 database and `python seed.py` to fill it with data.
+
+```console
+$ flask db upgrade
+$ python seed.py
+```
 
 In the React application, update your `App.js` file with the following code:
 
@@ -195,7 +204,7 @@ export default App;
 This will use the `useEffect` hook to fetch data from our Flask API, which you
 can then view in the console.
 
-***
+---
 
 ## Running React and Flask Together
 
@@ -226,9 +235,9 @@ Rather than running on a development server, we're migrating to [Gunicorn
 ][gunicorn], a simple Python WSGI server which will be much more capable of
 handling requests when we deploy our application to the internet.
 
-> **NOTE: Gunicorn will run on WSL, but not Windows. [Waitress](
-  https://docs.pylonsproject.org/projects/waitress/en/latest/) is a good
-> alternative if you cannot use MacOS, Linux, or WSL.**
+> **NOTE: Gunicorn will run on WSL, but not Windows.
+> [Waitress](https://docs.pylonsproject.org/projects/waitress/en/latest/) is a
+> good alternative if you cannot use MacOS, Linux, or WSL.**
 
 Now, run your Procfile with Honcho:
 
@@ -244,15 +253,15 @@ in the same terminal, it can be more challenging to read through the server logs
 and debug our code. If you're doing a lot of debugging in the terminal, you
 should run the client and server separately to get a cleaner terminal output.
 
-***
+---
 
 ## Conclusion
 
 In the past couple lessons, we've seen how to put together the two pieces we'll
-need for full-stack applications by creating a Flask API in a `server/` directory,
-and `create-react-app` to create a React project in a `client/` directory.
-Throughout the rest of this module, we will focus on how clients and servers
-communicate and how we can improve upon their connection.
+need for full-stack applications by creating a Flask API in a `server/`
+directory, and `create-react-app` to create a React project in a `client/`
+directory. Throughout the rest of this module, we will focus on how clients and
+servers communicate and how we can improve upon their connection.
 
 ## Check For Understanding
 
